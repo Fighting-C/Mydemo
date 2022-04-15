@@ -64,7 +64,16 @@ public class test_userdao {
     public void test5() {
         userService userService = new userService();
 
-        System.out.println(userService.getAllUser());
+        System.out.println(userService.selectByUserid(2));
+
+    }
+    @Test
+    public void test6() {
+        userService userService = new userService();
+        User user = new User();
+        user.setName("admin");
+        user.setUserPassword("111111");
+        System.out.println(userService.Login(user));
 
     }
 

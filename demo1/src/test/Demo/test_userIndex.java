@@ -13,7 +13,7 @@ public class test_userIndex {
     public void test1() {
         userIndexService userIndexService = new userIndexService();
         User user = new User();
-        user.setUserId(1);
+        user.setUserId(2);
 
         System.out.println(userIndexService.SelectByUserId(user));
     }
