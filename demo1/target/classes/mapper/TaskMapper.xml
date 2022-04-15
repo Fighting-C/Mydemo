@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TaskDao">
+  <resultMap id="BaseResultMap" type="entity.Task">
+    <id column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="fromUser_id" jdbcType="INTEGER" property="fromUserid" />
+    <result column="toUser_id" jdbcType="INTEGER" property="toUserid" />
+    <result column="task_type" jdbcType="VARCHAR" property="taskType" />
+    <result column="task_time" jdbcType="TIMESTAMP" property="taskTime" />
+    <result column="task_statu" jdbcType="VARCHAR" property="taskStatu" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    task_id, pro_id, fromuser_id, touser_id ,task_type, task_time, task_statu
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from task
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="task_id" keyProperty="taskId" parameterType="entity.Task" useGeneratedKeys="true">
+    insert into task (pro_id, fromUser_id,toUser_id , task_type,
+      task_time, task_statu)
+    values (#{proId,jdbcType=INTEGER}, #{fromUserid,jdbcType=INTEGER},#{toUserid,jdbcType=INTEGER}, #{taskType,jdbcType=VARCHAR},
+      #{taskTime,jdbcType=TIMESTAMP}, #{taskStatu,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="task_id" keyProperty="taskId" parameterType="entity.Task" useGeneratedKeys="true">
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        pro_id,
+      </if>
+      <if test="fromUserid != null">
+        fromuser_id,
+      </if>
+      <if test="toUserid != null">
+        touser_id,
+      </if>
+      <if test="taskType != null">
+        task_type,
+      </if>
+      <if test="taskTime != null">
+        task_time,
+      </if>
+      <if test="taskStatu != null">
+        task_statu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="fromUserid != null">
+        #{fromUserid,jdbcType=INTEGER},
+      </if>
+      <if test="toUserid != null">
+        #{toUserid,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTime != null">
+        #{taskTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskStatu != null">
+        #{taskStatu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Task">
+    update task
+    <set>
+      <if test="proId != null">
+        pro_id = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="fromUserid != null">
+        fromUser_id = #{fromUserid,jdbcType=INTEGER},
+      </if>
+      <if test="toUserid != null">
+        toUser_id = #{toUserid,jdbcType=INTEGER},
+      </if>
+      <if test="taskType != null">
+        task_type = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTime != null">
+        task_time = #{taskTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskStatu != null">
+        task_statu = #{taskStatu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Task">
+    update task
+    set pro_id = #{proId,jdbcType=INTEGER},
+      fromUser_id = #{fromUserid,jdbcType=INTEGER},
+      toUser_id = #{toUserid,jdbcType=INTEGER},
+      task_type = #{taskType,jdbcType=VARCHAR},
+      task_time = #{taskTime,jdbcType=TIMESTAMP},
+      task_statu = #{taskStatu,jdbcType=VARCHAR}
+    where task_id = #{taskId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllFromTask" resultMap="BaseResultMap" parameterType="integer">
+    select * from task where fromUser_id = #{fromUserid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAllToTask" resultMap="BaseResultMap" parameterType="integer">
+    select * from task where toUser_id = #{toUserid,jdbcType=INTEGER}
+  </select>
+</mapper>

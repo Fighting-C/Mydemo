@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserIndexDao">
+  <resultMap id="BaseResultMap" type="entity.UserIndex">
+    <result column="User_id" jdbcType="INTEGER" property="fromUserid"/>
+    <result column="User_Type" jdbcType="VARCHAR" property="userType"/>
+    <result column="User_Index" jdbcType="INTEGER" property="userIndex"/>
+  </resultMap>
+  <insert id="insert" parameterType="entity.UserIndex">
+    insert into user_index (User_id, User_Type, User_Index
+      )
+    values (#{fromUserid,jdbcType=INTEGER}, #{roles,jdbcType=VARCHAR}, #{userIndex,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="entity.UserIndex">
+    insert into user_index
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fromUserid != null">
+        User_id,
+      </if>
+      <if test="roles != null">
+        User_Type,
+      </if>
+      <if test="userIndex != null">
+        User_Index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fromUserid != null">
+        #{fromUserid,jdbcType=INTEGER},
+      </if>
+      <if test="roles != null">
+        #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="userIndex != null">
+        #{userIndex,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateSelective" parameterType="entity.UserIndex">
+    update user_index
+    <set>
+      <if test="fromUserid != null">
+        User_id = #{fromUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="roles != null">
+        User_Type = #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="userIndex != null">
+        User_Index = #{userIndex,jdbcType=VARCHAR},;
+      </if>
+    </set>
+    where User_Id = #{fromUserid,jdbcType=INTEGER}
+
+  </update>
+
+  <select id="selectUserIndexById" parameterType="entity.User" resultMap="BaseResultMap">
+    select * from user_index
+    where  User_id=#{fromUserid,jdbcType=INTEGER};
+  </select>
+</mapper>

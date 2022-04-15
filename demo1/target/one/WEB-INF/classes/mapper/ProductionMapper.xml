@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ProductionDao">
+  <resultMap id="BaseResultMap" type="entity.Production">
+    <id column="Pro_Id" jdbcType="INTEGER" property="proId" />
+    <result column="Pro_Name" jdbcType="VARCHAR" property="proName" />
+    <result column="Pro_status" jdbcType="VARCHAR" property="proStatus" />
+    <result column="Pro_Type" jdbcType="VARCHAR" property="proType" />
+    <result column="Pro_Manage" jdbcType="INTEGER" property="proManage" />
+    <result column="Pro_BeTime" jdbcType="TIMESTAMP" property="proBetime" />
+    <result column="Pro_EndTime" jdbcType="TIMESTAMP" property="proEndtime" />
+    <result column="Pro_LastTime" jdbcType="TIMESTAMP" property="proLasttime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Pro_Id, Pro_Name, Pro_Type, Pro_Manage, Pro_BeTime, Pro_EndTime, Pro_LastTime ,Pro_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from production
+    where Pro_Id = #{proId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from production
+    where Pro_Id = #{proId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="Pro_Id" keyProperty="proId" parameterType="entity.Production" useGeneratedKeys="true">
+    insert into production (Pro_Name, Pro_Type, Pro_Manage, 
+      Pro_BeTime, Pro_EndTime, Pro_LastTime ,Pro_status
+      )
+    values (#{proName,jdbcType=VARCHAR}, #{proType,jdbcType=VARCHAR}, #{proManage,jdbcType=INTEGER}, 
+      #{proBetime,jdbcType=TIMESTAMP}, #{proEndtime,jdbcType=TIMESTAMP}, #{proLasttime,jdbcType=TIMESTAMP},#{proStatus,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="Pro_Id" keyProperty="proId" parameterType="entity.Production" useGeneratedKeys="true">
+    insert into production
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proName != null">
+        Pro_Name,
+      </if>
+      <if test="proType != null">
+        Pro_Type,
+      </if>
+      <if test="proManage != null">
+        Pro_Manage,
+      </if>
+      <if test="proBetime != null">
+        Pro_BeTime,
+      </if>
+      <if test="proEndtime != null">
+        Pro_EndTime,
+      </if>
+      <if test="proLasttime != null">
+        Pro_LastTime,
+      </if>
+      <if test="proStatus != null">
+        Pro_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proName != null">
+        #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proType != null">
+        #{proType,jdbcType=VARCHAR},
+      </if>
+      <if test="proManage != null">
+        #{proManage,jdbcType=INTEGER},
+      </if>
+      <if test="proBetime != null">
+        #{proBetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proEndtime != null">
+        #{proEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proLasttime != null">
+        #{proLasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proStatus != null">
+        #{proStatus,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.Production">
+    update production
+    <set>
+      <if test="proName != null">
+        Pro_Name = #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proType != null">
+        Pro_Type = #{proType,jdbcType=VARCHAR},
+      </if>
+      <if test="proManage != null">
+        Pro_Manage = #{proManage,jdbcType=INTEGER},
+      </if>
+      <if test="proBetime != null">
+        Pro_BeTime = #{proBetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proEndtime != null">
+        Pro_EndTime = #{proEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proLasttime != null">
+        Pro_LastTime = #{proLasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="Pro_status != null">
+        Pro_status = #{proStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Pro_Id = #{proId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.Production">
+    update production
+    set Pro_Name = #{proName,jdbcType=VARCHAR},
+      Pro_status = #{proStatus,jdbcType=VARCHAR},
+      Pro_Type = #{proType,jdbcType=VARCHAR},
+      Pro_Manage = #{proManage,jdbcType=INTEGER},
+      Pro_BeTime = #{proBetime,jdbcType=TIMESTAMP},
+      Pro_EndTime = #{proEndtime,jdbcType=TIMESTAMP},
+      Pro_LastTime = #{proLasttime,jdbcType=TIMESTAMP}
+    where Pro_Id = #{proId,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectAllPro" resultMap="BaseResultMap" >
+    select * from production
+  </select>
+</mapper>

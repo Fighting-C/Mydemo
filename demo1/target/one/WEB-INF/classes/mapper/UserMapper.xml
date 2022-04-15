@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserDao">
+  <resultMap id="BaseResultMap" type="entity.User">
+    <id column="User_Id" jdbcType="INTEGER" property="fromUserid" />
+    <result column="User_Type" jdbcType="VARCHAR" property="roles" />
+    <result column="User_Number" jdbcType="VARCHAR" property="name" />
+    <result column="User_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="User_time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    User_Id, User_Type, User_Number, User_password ,avatar
+  </sql>
+
+  <select id="selectAllUsers" resultMap="BaseResultMap">
+    select * from user
+  </select>
+  <select id="selectByUserNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
+     select * from user
+     where User_Number = #{name,jdbcType=VARCHAR};
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where User_Id = #{fromUserid,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where User_Id = #{fromUserid,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" keyColumn="User_Id" keyProperty="fromUserid" parameterType="entity.User" useGeneratedKeys="true">
+    insert into user (User_Type, User_Number, User_password,User_time
+      )
+    values (#{roles,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="User_Id" keyProperty="fromUserid" parameterType="entity.User" useGeneratedKeys="true">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roles != null">
+        User_Type,
+      </if>
+      <if test="name != null">
+        User_Number,
+      </if>
+      <if test="userPassword != null">
+        User_password,
+      </if>
+      <if test="time != null">
+        User_Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roles != null">
+        #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.User">
+    update user
+    <set>
+      <if test="roles != null">
+        User_Type = #{roles,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        User_Number = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        User_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where User_Id = #{fromUserid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="entity.User">
+    update user
+    set User_Type = #{roles,jdbcType=VARCHAR},
+      User_Number = #{name,jdbcType=VARCHAR},
+      User_password = #{userPassword,jdbcType=VARCHAR}
+    where User_Id = #{fromUserid,jdbcType=INTEGER}
+  </update>
+</mapper>
