@@ -77,7 +77,7 @@ export function formatTime(time, option) {
     return '1天前'
   }
   if (option) {
-    return parseTime(time, option)
+    return ParseTime(time, option)
   } else {
     return (
       d.getMonth() +

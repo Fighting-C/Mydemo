@@ -42,7 +42,7 @@
       </el-table-column>
 <!--      <el-table-column label="已运营时长" width="110" align="center">-->
 <!--        <template slot-scope="scope">-->
-<!--          <span>{{ parseTime(scope.row.proLasttime )}}</span>-->
+<!--          <span>{{ ParseTime(scope.row.proLasttime )}}</span>-->
 <!--        </template>-->
 <!--      </el-table-column>-->
       <el-table-column align="center" prop="created_at" label="上次分红时间" width="300">

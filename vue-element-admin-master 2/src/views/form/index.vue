@@ -3,15 +3,13 @@
 
 <template>
   <div class="app-container">
-<!--    <div>-->
-<!--      {{ this.$store.getters.avatar}}-->
-<!--    </div>-->
+
     <header>
       <div class="Header">我的申请</div>
     </header>
     <el-table
       v-loading="listLoading"
-      :data="list"
+      :data="fromTask"
       element-loading-text="Loading"
       border
       fit
@@ -20,41 +18,42 @@
     >
       <el-table-column align="center" label="审批单ID" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.row.taskId}}
         </template>
       </el-table-column>
       <el-table-column label="产品名称" width="110" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
+          <span>{{ scope.row.proId }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作类型" width="110" align="center">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.taskType }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="操作人ID" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ scope.row.fromUserid }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="申请时间" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ parseTime(scope.row.taskTime)  }}</span>
         </template>
       </el-table-column>
       <el-table-column class-name="status-col" label="状态" width="200" align="center">
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
+          <el-tag :type="scope.row.taskStatu | statusFilter">{{ scope.row.taskStatu }}</el-tag>
         </template>
       </el-table-column>
     </el-table>
     <header>
       <div class="Header">待我处理</div>
     </header>
+
     <el-table
       v-loading="listLoading"
-      :data="list"
+      :data="toTask"
       element-loading-text="Loading"
       border
       fit
@@ -63,27 +62,27 @@
     >
       <el-table-column align="center" label="审批单ID" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.row.taskId }}
         </template>
       </el-table-column>
       <el-table-column label="产品名称" width="110" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
+          <span>{{ scope.row.proId }}</span>
         </template>
       </el-table-column>
       <el-table-column label="操作类型" width="110" align="center">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.taskStatu }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="操作人ID" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ scope.row.fromUserid }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="申请时间" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ parseTime(scope.row.taskTime) }}</span>
         </template>
       </el-table-column>
       <el-table-column  align="center" prop="created_at" label="操作" width="200">
@@ -97,38 +96,50 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
+  import { getFromTask } from '@/api/task'
+  import { getToTask } from '@/api/task'
+  import store from '@/store'
+  import { parseTime } from  '@/utils/index'
 
 export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
+        '已通过': 'success',
+        '正在处理': 'gray',
+        '未通过': 'danger'
       }
       return statusMap[status]
     }
   },
   data() {
     return {
-      list: null,
-      //修改了
+      userId : null,
+      fromTask: null,
+      toTask: null,
       listLoading: false
     }
+  },
+  created() {
+    this.userId = store.getters.token
+    this.fetchData()
+
+  },
+  methods: {
+    parseTime,
+    fetchData() {
+      this.listLoading = true
+      let params ={id : this.userId}
+      getFromTask(params).then(response => {
+        this.fromTask = response.data
+      })
+      getToTask(params).then(response => {
+        this.toTask = response.data
+        this.listLoading = false
+      })
+
+    }
   }
-  // created() {
-  //   this.fetchData()
-  // },
-  // methods: {
-  //   fetchData() {
-  //     this.listLoading = true
-  //     getList().then(response => {
-  //       this.list = response.data.items
-  //       this.listLoading = false
-  //     })
-  //   }
-  // }
 }
 </script>
 <style>

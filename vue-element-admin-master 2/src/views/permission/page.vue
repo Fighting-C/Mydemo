@@ -6,6 +6,8 @@
       <div>
         <el-button class="myButton" type="primary" @click.native="handleForm(null,null)">新增</el-button>
       </div>
+  <div>roles:{{roles}}</div>
+  <div>userId:{{userId}}</div>
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -97,6 +99,7 @@ import { getUserList } from  '@/api/table'
 import { parseTime } from  '@/utils/index'
 import { updateUser } from '@/api/user'
 import { deleteUser } from '@/api/user'
+import store from '@/store'
 
 const formJson = {
   userId: "",
@@ -125,11 +128,11 @@ export default {
         callback();
       }
     };
-    let validatePass2 = (rule, value, callback) => {
+    const validatePass2 = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请再次输入密码"));
+        callback(new Error('请再次输入密码'));
       } else if (value !== this.formData.userPassword) {
-        callback(new Error("两次输入密码不一致!"));
+        callback(new Error('两次输入密码不一致!'));
       } else {
         callback();
       }
@@ -142,6 +145,7 @@ export default {
       }
     };
     return {
+      userId: null,
       isShow: true,
       list: null,
       listLoading: false,
@@ -212,8 +216,9 @@ export default {
 
   },
   created(){
+    this.roles = store.getters.roles
+    this.userId = store.getters.token
     this.fetchData()
-    // this.roles = getters.token()
   },
   methods: {
     parseTime,

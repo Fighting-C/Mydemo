@@ -29,5 +29,6 @@
         <mapper resource="mapper/ProductionMapper.xml"/>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/UserIndexMapper.xml"/>
+        <mapper resource="mapper/TaskMapper.xml"/>
     </mappers>
 </configuration>
