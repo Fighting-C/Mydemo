@@ -6,8 +6,8 @@
       <div>
         <el-button class="myButton" type="primary" @click.native="handleForm(null,null)">新增</el-button>
       </div>
-  <div>roles:{{roles}}</div>
-  <div>userId:{{userId}}</div>
+<!--  <div>roles:{{roles}}</div>-->
+<!--  <div>userId:{{userId}}</div>-->
     <el-table
       v-loading="listLoading"
       :data="list"
