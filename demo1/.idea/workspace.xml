@@ -7,15 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd2b0d4c-71bc-471c-88f2-28dd037431d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/servlet/taskServlet/getTasksServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/Demo/test_task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-element-admin-master 2/src/api/task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mybatis_conf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Mybatis_conf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Mybatis_conf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Mybatis_conf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/one/WEB-INF/classes/Mybatis_conf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/one/WEB-INF/classes/Mybatis_conf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master 2/src/views/form/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master 2/src/views/form/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master 2/src/views/permission/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master 2/src/views/permission/page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master 2/src/api/pro.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master 2/src/api/pro.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -79,11 +72,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/taskServlet/getTasksServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
+            <state relative-caret-position="233">
               <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/Demo/test_pro.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entity/Production.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/main/java/dao/TaskDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/service/taskService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entity/Production.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/ProductionDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/userIndexService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserIndexMapper.xml" />
@@ -167,6 +183,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/Mybatis_conf.xml" />
         <option value="$PROJECT_DIR$/src/test/Demo/test_task.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/taskServlet/getTasksServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Production.java" />
       </list>
     </option>
   </component>
@@ -213,9 +230,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="596" />
-    <option name="y" value="236" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-75" />
+    <option name="y" value="-23" />
     <option name="width" value="1299" />
     <option name="height" value="1048" />
   </component>
@@ -265,15 +282,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-              <item name="daoImp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="demo1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -316,14 +324,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="demo1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="demo1" type="b2602c69:ProjectViewProjectNode" />
@@ -683,14 +683,11 @@
       <workItem from="1649833651102" duration="14773000" />
       <workItem from="1649989790566" duration="12013000" />
       <workItem from="1650020426535" duration="713000" />
-      <workItem from="1650021416799" duration="9058000" />
+      <workItem from="1650021416799" duration="9313000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="test_task_test1 - 2022.04.17 at 11h 00m 22s.xml">
-      <configuration name="test_task.test1" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="test_task_test1 - 2022.04.17 at 11h 01m 00s.xml">
       <configuration name="test_task.test1" configurationId="JUnit" />
     </history-entry>
@@ -718,9 +715,12 @@
     <history-entry file="test_task_test1 - 2022.04.17 at 11h 08m 34s.xml">
       <configuration name="test_task.test1" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="test_pro_test1 - 2022.04.17 at 14h 42m 51s.xml">
+      <configuration name="test_pro.test1" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138920000" />
+    <option name="totallyTimeSpent" value="139175000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -732,9 +732,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="477" y="189" width="1039" height="838" extended-state="0" />
+    <frame x="-7" y="-7" width="2062" height="1136" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30479103" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1492016" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24974516" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -745,7 +746,7 @@
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
-      <window_info active="true" anchor="bottom" id="Debug" order="2" sideWeight="0.52395207" visible="true" weight="0.5708215" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.52395207" weight="0.22011952" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" weight="0.5498008" />
@@ -758,7 +759,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32868525" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.33266932" />
       <window_info anchor="bottom" id="Application Servers" order="14" weight="0.32768923" />
-      <window_info anchor="bottom" id="Run" order="15" sideWeight="0.5469062" weight="0.5139442" />
+      <window_info anchor="bottom" id="Run" order="15" sideWeight="0.5469062" visible="true" weight="0.2818725" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -934,16 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/Demo/test_pro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/proService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -970,16 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="58" column="21" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Production.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="38" column="88" selection-start-line="38" selection-start-column="88" selection-end-line="38" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1251,8 +1232,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlet/taskServlet/getTasksServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
+        <state relative-caret-position="233">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Demo/test_pro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Production.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

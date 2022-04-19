@@ -6,6 +6,6 @@ export function updatePro(params) {
     baseURL: 'http://localhost:8080/MyDemo/',
     url: '/updatePro',
     method: 'get',
-    data: decodeURI(params)
+    params
   })
 }

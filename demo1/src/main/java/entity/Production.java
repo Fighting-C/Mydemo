@@ -29,6 +29,9 @@ public class Production implements Serializable {
      */
     private Date proEndtime;
 
+    public Production() {
+    }
+
     /**
      * 上次分红时间
      */

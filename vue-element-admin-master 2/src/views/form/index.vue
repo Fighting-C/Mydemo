@@ -16,17 +16,17 @@
       highlight-current-row
       botton
     >
-      <el-table-column align="center" label="审批单ID" width="95">
+      <el-table-column align="center" label="审批单ID" width="120">
         <template slot-scope="scope">
           {{ scope.row.taskId}}
         </template>
       </el-table-column>
-      <el-table-column label="产品名称" width="110" align="center">
+      <el-table-column label="产品名称"  align="center" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.proId }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作类型" width="110" align="center">
+      <el-table-column label="操作类型" width="200" align="center">
         <template slot-scope="scope">
           {{ scope.row.taskType }}
         </template>
@@ -36,7 +36,7 @@
           <span>{{ scope.row.fromUserid }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="申请时间" width="200">
+      <el-table-column align="center" prop="created_at" label="申请时间" width="240">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.taskTime)  }}</span>
         </template>
@@ -60,17 +60,17 @@
       highlight-current-row
       botton
     >
-      <el-table-column align="center" label="审批单ID" width="95">
+      <el-table-column align="center" label="审批单ID" width="120">
         <template slot-scope="scope">
           {{ scope.row.taskId }}
         </template>
       </el-table-column>
-      <el-table-column label="产品名称" width="110" align="center">
+      <el-table-column label="产品名称" width="200" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.proId }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作类型" width="110" align="center">
+      <el-table-column label="操作类型" width="200" align="center">
         <template slot-scope="scope">
           {{ scope.row.taskStatu }}
         </template>
@@ -80,7 +80,7 @@
           <span>{{ scope.row.fromUserid }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="申请时间" width="200">
+      <el-table-column align="center" prop="created_at" label="申请时间" width="240">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.taskTime) }}</span>
         </template>
