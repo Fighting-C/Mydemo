@@ -21,7 +21,7 @@ public class test_task  {
     @Test
     public void test2() {
         taskService taskService = new taskService();
-        List<Task> list = taskService.selectAllToTask(2);
+        List<Task> list = taskService.selectAllToTask("approver");
         System.out.println(list);
     }
 
@@ -30,8 +30,23 @@ public class test_task  {
         taskService taskService = new taskService();
         Task task = new Task();
         task.setFromUserid(2);
-        task.setToUserid(4);
+        task.setToUsertype("admin");
         task.setProId(1);
         System.out.println(taskService.insertSelective(task));
+    }
+    @Test
+    public void test4() {
+        taskService taskService = new taskService();
+        Task task = new Task();
+        task.setTaskId(1);
+        task.setTaskStatu("未通过");
+        System.out.println(taskService.updateByPrimaryKeySelective(task));
+    }
+    @Test
+    public void test5() {
+        taskService taskService = new taskService();
+        Task task = new Task();
+        task.setTaskId(1);
+        System.out.println(taskService.getTaskByTaskId(1));
     }
 }

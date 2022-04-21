@@ -54,7 +54,8 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-
+import { encode64 } from '@/utils/index'
+import md5 from 'js-md5';
 export default {
   name: 'Login',
 
@@ -126,6 +127,8 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
+          this.loginForm.password =md5(this.loginForm.password)
+          this.loginForm.username = encodeURIComponent(this.loginForm.username)
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
               this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
@@ -133,6 +136,7 @@ export default {
             })
             .catch(() => {
               this.loading = false
+              this.$refs["loginForm"].resetFields()
             })
         } else {
           console.log('error submit!!')

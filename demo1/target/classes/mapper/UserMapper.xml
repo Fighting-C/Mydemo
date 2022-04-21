@@ -10,14 +10,18 @@
     <result column="avatar" jdbcType="VARCHAR" property="avatar" />
   </resultMap>
   <sql id="Base_Column_List">
-    User_Id, User_Type, User_Number, User_password ,avatar ,User_time
+    User_Id, User_Type, User_Number,AES_DECRYPT(unhex(User_password), 'key') User_password,avatar ,User_time
   </sql>
 
   <select id="selectAllUsers" resultMap="BaseResultMap">
-    select * from user
+    select
+     <include refid="Base_Column_List" />
+      from user
   </select>
   <select id="selectByUserNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
-     select * from user
+     select
+      <include refid="Base_Column_List" />
+       from user
      where User_Number = #{name,jdbcType=VARCHAR};
   </select>
 
@@ -36,7 +40,7 @@
   <insert id="insert" keyColumn="User_Id" keyProperty="userId" parameterType="entity.User" useGeneratedKeys="true">
     insert into user (User_Type, User_Number, User_password,User_time
       )
-    values (#{roles,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+    values (#{roles,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, hex(AES_ENCRYPT(#{userPassword,jdbcType=VARCHAR},'key')), #{time,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" keyColumn="User_Id" keyProperty="userId" parameterType="entity.User" useGeneratedKeys="true">
@@ -63,7 +67,7 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
-        #{userPassword,jdbcType=VARCHAR},
+       hex(AES_ENCRYPT(#{userPassword,jdbcType=VARCHAR},'key')) ,
       </if>
       <if test="time != null">
         #{time,jdbcType=TIMESTAMP},
@@ -80,7 +84,7 @@
         User_Number = #{name,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
-        User_password = #{userPassword,jdbcType=VARCHAR},
+        User_password = hex(AES_ENCRYPT(#{userPassword,jdbcType=VARCHAR},'key')),
       </if>
     </set>
     where User_Id = #{userId,jdbcType=INTEGER}
@@ -90,7 +94,7 @@
     update user
     set User_Type = #{roles,jdbcType=VARCHAR},
       User_Number = #{name,jdbcType=VARCHAR},
-      User_password = #{userPassword,jdbcType=VARCHAR}
+      User_password = hex(AES_ENCRYPT(#{userPassword,jdbcType=VARCHAR},'key')),
     where User_Id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>

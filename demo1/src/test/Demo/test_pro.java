@@ -1,6 +1,7 @@
 import dao.daoImp.ProductionDaoImp;
 import entity.Production;
 import org.junit.Test;
+import service.proService;
 
 import java.util.List;
 
@@ -13,7 +14,13 @@ public class test_pro {
     public void test1() {
         ProductionDaoImp productionDaoImp = new ProductionDaoImp();
         List<Production> list = productionDaoImp.selectAllPro();
-        System.out.println(list);
+        System.out.println(list.size());
+
+    }
+    @Test
+    public void test2() {
+        proService proService = new proService();
+        System.out.println(proService.allManageMoney());
 
     }
 }

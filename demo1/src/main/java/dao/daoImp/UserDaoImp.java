@@ -72,7 +72,17 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public int insertSelective(User record) {
-        return 0;
+        SqlSession sqlSession = SqlSessionUtils.getSqlSessionFactory().openSession();
+        try {
+            sqlSession.insert("dao.UserDao.insertSelective", record);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            sqlSession.close();
+        }
+        return 1;
     }
 
 

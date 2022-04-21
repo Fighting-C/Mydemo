@@ -7,6 +7,7 @@ import com.sun.javafx.sg.prism.web.NGWebView;
 import entity.Result;
 import entity.User;
 import service.userService;
+import utils.decode;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 /**
  * @PackageName:servlet
  * @Date:2022/3/915:01
+ * MTExMTEx
  **/
 @WebServlet("/login")
 public class loginServlet extends HttpServlet {
@@ -30,6 +34,7 @@ public class loginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         JSONObject jsonObject = null;
         String username = "";
+
         String password = "";
         try {
             InputStreamReader reader=new InputStreamReader(req.getInputStream());
@@ -38,6 +43,7 @@ public class loginServlet extends HttpServlet {
             jsonObject = JSON.parseObject(data);
             username = jsonObject.getString("username");
             password = jsonObject.getString("password");
+            username = URLDecoder.decode(username, "UTF-8");
             user = new User(username, password);
             jsonObject.clear();
         } catch (IOException e) {

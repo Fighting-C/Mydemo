@@ -22,4 +22,19 @@ public class proService {
     public int insertSelective(Production production) {
         return productionDaoImp.insertSelective(production);
     }
+
+
+    //返回总管理资产
+    public int allManageMoney() {
+        List<Production> list = this.SelectAllPro();
+        int sum = 0;
+        for (Production production1 : list) {
+            sum += production1.getProManage();
+        }
+        return sum;
+    }
+
+    public int updateByPrimaryKeySelective(Production production) {
+        return productionDaoImp.updateByPrimaryKeySelective(production);
+    }
 }

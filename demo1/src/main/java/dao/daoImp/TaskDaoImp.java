@@ -59,12 +59,32 @@ public class TaskDaoImp implements TaskDao {
 
     @Override
     public Task selectByPrimaryKey(Integer taskId) {
-        return null;
+        Task task = null;
+        SqlSession sqlSession = SqlSessionUtils.getSqlSessionFactory().openSession();
+        try {
+            task = sqlSession.selectOne("dao.TaskDao.selectByPrimaryKey", taskId);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return task;
     }
 
     @Override
     public int updateByPrimaryKeySelective(Task record) {
-        return 0;
+        SqlSession sqlSession = SqlSessionUtils.getSqlSessionFactory().openSession();
+        try {
+            sqlSession.update("dao.TaskDao.updateByPrimaryKeySelective", record);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            sqlSession.close();
+        }
+        return 1;
     }
 
     @Override
@@ -88,11 +108,11 @@ public class TaskDaoImp implements TaskDao {
     }
 
     @Override
-    public List<Task> selectAllToTask(Integer userid) {
+    public List<Task> selectAllToTask(String userType) {
         List<Task> list = null;
         SqlSession sqlSession = SqlSessionUtils.getSqlSessionFactory().openSession();
         try {
-            list = sqlSession.selectList("dao.TaskDao.selectAllToTask", userid);
+            list = sqlSession.selectList("dao.TaskDao.selectAllToTask", userType);
             sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();

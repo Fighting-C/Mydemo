@@ -55,8 +55,8 @@ public class test_userdao {
     @Test
     public void test4() {
         userService userService = new userService();
-        User user = new User("123", "123123");
-        user.setUserId(4);
+        User user = new User("approver", "111111");
+        user.setUserId(25);
         System.out.println(userService.updateUser(user));
     }
 
@@ -72,8 +72,17 @@ public class test_userdao {
         userService userService = new userService();
         User user = new User();
         user.setName("admin");
-        user.setUserPassword("111111");
+        user.setUserPassword("96e79218965eb72c92a549dd5a330112");
         System.out.println(userService.Login(user));
+
+    }
+    @Test
+    public void test7() {
+        userService userService = new userService();
+        User user = new User();
+        user.setName("admin2");
+        user.setUserPassword("111111");
+        System.out.println(userService.insertUser(user));
 
     }
 

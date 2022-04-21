@@ -19,5 +19,5 @@ public interface TaskDao {
 
     List<Task> selectAllFromTask(Integer userid);
 
-    List<Task> selectAllToTask(Integer userid);
+    List<Task> selectAllToTask(String userType);
 }

@@ -16,18 +16,18 @@ public class Task implements Serializable {
 
     private String taskType;
 
-    private Integer toUserid;
+    private String toUsertype;
 
     private Date taskTime;
 
     private String taskStatu;
 
-    public Integer getToUserid() {
-        return toUserid;
+    public String getToUsertype() {
+        return toUsertype;
     }
 
-    public void setToUserid(Integer toUserid) {
-        this.toUserid = toUserid;
+    public void setToUsertype(String toUsertype) {
+        this.toUsertype = toUsertype;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Task implements Serializable {
                 ", proId=" + proId +
                 ", fromUserid=" + fromUserid +
                 ", taskType='" + taskType + '\'' +
-                ", toUserid=" + toUserid +
+                ", toUsertype=" + toUsertype +
                 ", taskTime=" + taskTime +
                 ", taskStatu='" + taskStatu + '\'' +
                 '}';

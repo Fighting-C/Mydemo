@@ -32,6 +32,14 @@ public class Production implements Serializable {
     public Production() {
     }
 
+    public String getProStatus() {
+        return proStatus;
+    }
+
+    public void setProStatus(String proStatus) {
+        this.proStatus = proStatus;
+    }
+
     /**
      * 上次分红时间
      */
@@ -104,11 +112,6 @@ public class Production implements Serializable {
         this.proLasttime = proLasttime;
     }
 
-    public String getProStatus() {
-        return proStatus;
-    }
 
-    public void setProStatus(String proStatus) {
-        this.proStatus = proStatus;
-    }
+
 }

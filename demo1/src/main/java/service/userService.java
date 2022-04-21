@@ -3,6 +3,7 @@ package service;
 import dao.UserDao;
 import dao.daoImp.UserDaoImp;
 import entity.User;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class userService {
      * 新增User
      */
     public int insertUser(User user) {
-        return userDao.insert(user);
+        return userDao.insertSelective(user);
     }
 
     /**
@@ -43,11 +44,13 @@ public class userService {
             return -1;
         }
         index = userDao.selectByUserNumber(user.getName());
+        String pwd1 =user.getUserPassword();
+        String pwd2 = DigestUtils.md5Hex(index.getUserPassword());
         if (index == null) {
             return -1;
-        }else if (index.getUserPassword().equals(user.getUserPassword())){
+        } else if (pwd2.equals(pwd1)) {
             return index.getUserId();
-        }else {
+        } else {
             return -1;
         }
     }

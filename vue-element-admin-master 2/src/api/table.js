@@ -19,3 +19,11 @@ export function getUserList(user) {
     user
   })
 }
+  export function gettable() {
+  return request({
+    // url: '/vue-element-admin/table/list',
+    baseURL: 'http://localhost:8080/MyDemo/',
+    url: '/gettable',
+    method: 'get',
+  })
+}

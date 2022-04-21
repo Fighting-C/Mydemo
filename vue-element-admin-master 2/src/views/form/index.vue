@@ -72,7 +72,7 @@
       </el-table-column>
       <el-table-column label="操作类型" width="200" align="center">
         <template slot-scope="scope">
-          {{ scope.row.taskStatu }}
+          {{ scope.row.taskType }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="操作人ID" width="200">
@@ -86,9 +86,9 @@
         </template>
       </el-table-column>
       <el-table-column  align="center" prop="created_at" label="操作" width="200">
-        <template>
-          <button class="myButton">拒绝</button>
-          <button class="myButton">通过</button>
+        <template slot-scope="scope">
+          <el-button  type="primary" class="myButton"  @click.native="unpass(scope.row.taskId)">拒绝</el-button>
+          <el-button type="primary" class="myButton"  @click.native="pass(scope.row.taskId)">通过</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -99,6 +99,8 @@
   import { getFromTask } from '@/api/task'
   import { getToTask } from '@/api/task'
   import store from '@/store'
+  import { pass } from  '@/api/task'
+  import { unpass } from  '@/api/task'
   import { parseTime } from  '@/utils/index'
 
 export default {
@@ -114,6 +116,7 @@ export default {
   },
   data() {
     return {
+      userroles: null,
       userId : null,
       fromTask: null,
       toTask: null,
@@ -122,6 +125,7 @@ export default {
   },
   created() {
     this.userId = store.getters.token
+    this.userroles = store.getters.roles
     this.fetchData()
 
   },
@@ -130,14 +134,41 @@ export default {
     fetchData() {
       this.listLoading = true
       let params ={id : this.userId}
+      let params2 ={id : this.userroles}
       getFromTask(params).then(response => {
         this.fromTask = response.data
       })
-      getToTask(params).then(response => {
+      getToTask(params2).then(response => {
         this.toTask = response.data
         this.listLoading = false
       })
 
+    },
+    pass(taskId) {
+      pass({taskId:taskId }).then(response => {
+
+        if (response.code !== 20000) {
+          // this.$message.error(response.message);
+          this.$message.error('操作失败');
+          this.fetchData();
+          return false;
+        }
+        this.$message.success("操作成功");
+        this.fetchData();
+      });
+    },
+    unpass(taskId) {
+      unpass({taskId:taskId }).then(response => {
+
+        if (response.code !== 20000) {
+          // this.$message.error(response.message);
+          this.$message.error('操作失败');
+          this.fetchData();
+          return false;
+        }
+        this.$message.success("操作成功");
+        this.fetchData();
+      });
     }
   }
 }

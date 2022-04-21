@@ -34,7 +34,7 @@ public class getTasksServlet extends HttpServlet {
         String path = req.getServletPath();
         String userId = req.getParameter("id");
         if ("/getToTask".equals(path)) {
-            list = taskService.selectAllToTask(Integer.parseInt(userId));
+            list = taskService.selectAllToTask(userId);
         }else{
             list = taskService.selectAllFromTask(Integer.parseInt(userId));
         }

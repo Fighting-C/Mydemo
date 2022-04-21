@@ -44,9 +44,8 @@ public class getUserServlet extends HttpServlet {
         if (path.equals("/info")) {
                 String userid = req.getParameter("token");
             user = userService.selectByUserid(Integer.parseInt(userid));
-                String role = userIndexService.SelectByUserId(user);
+                String role = user.getRoles();
                 user.setRoles(role);
-            System.out.println(user);
             result.setData(user);
 
         } else if (path.equals("/allUser")) {

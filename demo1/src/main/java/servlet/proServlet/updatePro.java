@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +44,7 @@ public class updatePro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String proname = req.getParameter("proname");
+        proname = URLDecoder.decode(proname, "UTF-8");
         String protype = req.getParameter("protype");
         String probegintime = req.getParameter("probegintime");
         String proendtime = req.getParameter("proendtime");

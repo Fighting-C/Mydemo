@@ -3,6 +3,7 @@
 
 <template>
   <div class="app-container">
+
     <div>
       <el-button class="myButton" type="primary" @click.native="handleForm(null)">管理产品</el-button>
     </div>
@@ -40,11 +41,6 @@
           <span>{{ parseTime(scope.row.proEndtime) }}</span>
         </template>
       </el-table-column>
-<!--      <el-table-column label="已运营时长" width="110" align="center">-->
-<!--        <template slot-scope="scope">-->
-<!--          <span>{{ ParseTime(scope.row.proLasttime )}}</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
       <el-table-column align="center" prop="created_at" label="上次分红时间" width="300">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.proLasttime)}}</span>
@@ -55,10 +51,11 @@
           <el-tag :type="scope.row.proStatus | statusFilter">{{ scope.row.proStatus }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="操作" width="200">
-        <template>
-          <button class="myButton" >分红</button>
-          <button class="myButton">结算</button>
+      <el-table-column align="center" prop="created_at" label="操作" width="200" v-if="this.userroles === 'admin'||this.userroles=== 'editor'">
+        <template slot-scope="scope">
+          <el-button  type="primary" class="myButton"  @click.native="fenHong(scope.row.proId)" v-show="scope.row.proStatus!=='已结算'">分红</el-button>
+          <el-button type="primary" class="myButton" @click.native="jieSuan(scope.row.proId)" v-show="scope.row.proStatus!=='已结算'">结算</el-button>
+          <spen v-show="scope.row.proStatus==='已结算'">已结算</spen>
         </template>
       </el-table-column>
     </el-table>
@@ -69,8 +66,6 @@
       :before-close="hideForm"
       width="85%"
       top="5vh">
-
-
       <el-form :model="formData" :rules="formRules"  ref="dataForm" >
         <el-form-item label="产品名称" prop="proname">
           <el-input v-model="formData.proname" auto-complete="off"></el-input>
@@ -121,6 +116,9 @@
 import { getProList } from '@/api/table'
 import { parseTime } from '@/utils/index'
 import { updatePro } from '@/api/pro'
+import { fenHong } from '@/api/pro'
+import { jieSuan } from '@/api/pro'
+import store from '@/store'
 const formJson = {
   protype:"",
   proname:"",
@@ -134,9 +132,9 @@ export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        success: 'success',
-        draft: 'gray',
-        deleted: 'danger'
+        '运营中': 'success',
+        '审核中': 'gray',
+        '已结算': 'danger'
       }
       return statusMap[status]
     }
@@ -147,6 +145,7 @@ export default {
       list: null,
       listLoading: false,
       roles: null,
+      userroles:null,
       formLoading: false,
       formVisible: false,
       formName: null,
@@ -184,6 +183,7 @@ export default {
   },
   created() {
     this.fetchData()
+    this.userroles = store.getters.roles
   },
   methods: {
     parseTime,
@@ -224,6 +224,7 @@ export default {
       this.$refs["dataForm"].validate(valid => {
         if (valid) {
           this.formLoading = true;
+          this.formData.proname = encodeURIComponent( this.formData.proname)
           let data = Object.assign({}, this.formData);
           updatePro(data).then(response => {
             this.formLoading = false;
@@ -243,6 +244,40 @@ export default {
         }
       });
     },
+    fenHong(proId) {
+        fenHong(
+          {proId : proId ,
+            userId : store.getters.token
+          }
+        ).then(response => {
+
+          if (response.code !== 20000) {
+            // this.$message.error(response.message);
+            this.$message.error('操作失败');
+            this.fetchData();
+            return false;
+          }
+          this.$message.success("操作成功");
+          this.fetchData();
+        });
+    },
+    jieSuan(proId) {
+        jieSuan(
+          {proId : proId ,
+            userId : store.getters.token
+          }
+        ).then(response => {
+
+          if (response.code !== 20000) {
+            // this.$message.error(response.message);
+            this.$message.error('操作失败');
+            this.fetchData();
+            return false;
+          }
+          this.$message.success("操作成功");
+          this.fetchData();
+        });
+    }
   }
 }
 </script>

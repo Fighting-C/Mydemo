@@ -16,3 +16,19 @@ export function getFromTask(params) {
     params
   })
 }
+export function pass(params) {
+  return request({
+    baseURL: 'http://localhost:8080/MyDemo/',
+    url: '/pass',
+    method: 'get',
+    params
+  })
+}
+export function unpass(params) {
+  return request({
+    baseURL: 'http://localhost:8080/MyDemo/',
+    url: '/unpass',
+    method: 'get',
+    params
+  })
+}

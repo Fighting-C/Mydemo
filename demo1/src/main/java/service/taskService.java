@@ -14,12 +14,16 @@ public class taskService {
     private TaskDao taskDao = new  TaskDaoImp();
     private Task task = null;
 
+    public int updateByPrimaryKeySelective(Task task) {
+        return taskDao.updateByPrimaryKeySelective(task);
+    }
+
     public List<Task> selectAllFromTask(Integer userid) {
         return taskDao.selectAllFromTask(userid);
     }
 
-    public List<Task> selectAllToTask(Integer userid){
-        return taskDao.selectAllToTask(userid);
+    public List<Task> selectAllToTask(String userType){
+        return taskDao.selectAllToTask(userType);
     }
 
     public int  insertSelective(Task record){
@@ -29,4 +33,7 @@ public class taskService {
         return taskDao.deleteByPrimaryKey(taskId);
     }
 
+    public Task getTaskByTaskId(Integer taskid) {
+        return taskDao.selectByPrimaryKey(taskid);
+    }
 }

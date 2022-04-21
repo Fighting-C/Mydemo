@@ -14,37 +14,37 @@
     >
       <el-table-column align="center" label="产品名称" width="95">
         <template slot-scope="scope">
-          {{ scope.$index }}
+          {{ scope.row.proName }}
         </template>
       </el-table-column>
       <el-table-column label="产品类型">
         <template slot-scope="scope">
-          {{ scope.row.author }}
+          {{ scope.row.proType }}
         </template>
       </el-table-column>
       <el-table-column label="当前仓位" width="110" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
+          <span>{{ scope.row.proType }}</span>
         </template>
       </el-table-column>
       <el-table-column label="建议仓位" width="110" align="center">
         <template slot-scope="scope">
-          {{ scope.row.pageviews }}
+          {{ scope.row.proType }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="月收益率" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ scope.row.proType }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="三个月收益率" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ scope.row.proType }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="年收益率" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.display_time }}</span>
+          <span>{{ scope.row.proType }}</span>
         </template>
       </el-table-column>
       <el-table-column  align="center" prop="created_at" label="操作" width="200">
@@ -56,7 +56,7 @@
   </div>
 </template>
 <script>
-import { getList } from '@/api/table'
+import { getProList } from '@/api/table'
 
 export default {
   filters: {
@@ -74,18 +74,18 @@ export default {
       list: null,
       listLoading: false
     }
-  // },
-  // created() {
-  //   this.fetchData()
-  // },
-  // methods: {
-  //   fetchData() {
-  //     this.listLoading = true
-  //     getList().then(response => {
-  //       this.list = response.data.items
-  //       this.listLoading = false
-  //     })
-  //   }
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      this.listLoading = true
+      getProList().then(response => {
+        this.list = response.data
+        this.listLoading = false
+      })
+    }
   }
 }
 </script>

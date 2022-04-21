@@ -29,7 +29,7 @@
       </el-table-column>
       <el-table-column label="用户角色" align="center" width="400">
         <template slot-scope="scope">
-          {{ scope.row.roles }}
+          {{ handleRoles(scope.row.roles)  }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="密码" width="400">
@@ -76,6 +76,7 @@
           <el-radio-group v-model="formData.roles">
             <el-radio :label="0">管理员</el-radio>
             <el-radio :label="1">职工</el-radio>
+            <el-radio :label="2">处理人</el-radio>
           </el-radio-group>
         </el-form-item>
 <!--        <el-form-item label="状态" prop="status">-->
@@ -263,9 +264,19 @@ export default {
       this.$refs["dataForm"].resetFields();
       return true;
     },
+    handleRoles( roles) {
+      if (roles === 'admin') {
+        return '管理员'
+      } else if (roles === 'editor') {
+        return '职工'
+      }else {
+        return '处理人'
+      }
+    },
     formSubmit() {
       this.$refs["dataForm"].validate(valid => {
         if (valid) {
+          this.formData.name = encodeURIComponent(this.formData.name);
           this.formLoading = true;
           let data = Object.assign({}, this.formData);
           updateUser(data).then(response => {

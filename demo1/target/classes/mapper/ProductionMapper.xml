@@ -29,7 +29,7 @@
       Pro_BeTime, Pro_EndTime, Pro_LastTime ,Pro_status
       )
     values (#{proName,jdbcType=VARCHAR}, #{proType,jdbcType=VARCHAR}, #{proManage,jdbcType=INTEGER}, 
-      #{proBetime,jdbcType=TIMESTAMP}, #{proEndtime,jdbcType=TIMESTAMP}, #{proLasttime,jdbcType=TIMESTAMP},#{proStatus,jdbcType=TIMESTAMP}
+      #{proBetime,jdbcType=TIMESTAMP}, #{proEndtime,jdbcType=TIMESTAMP}, #{proLasttime,jdbcType=TIMESTAMP},#{proStatus,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" keyColumn="Pro_Id" keyProperty="proId" parameterType="entity.Production" useGeneratedKeys="true">
@@ -77,7 +77,7 @@
         #{proLasttime,jdbcType=TIMESTAMP},
       </if>
       <if test="proStatus != null">
-        #{proStatus,jdbcType=TIMESTAMP},
+        #{proStatus,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -102,7 +102,7 @@
       <if test="proLasttime != null">
         Pro_LastTime = #{proLasttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="Pro_status != null">
+      <if test="proStatus != null">
         Pro_status = #{proStatus,jdbcType=VARCHAR},
       </if>
     </set>
@@ -122,6 +122,6 @@
 
 
   <select id="selectAllPro" resultMap="BaseResultMap" >
-    select * from production
+    select * from production order by Pro_Id
   </select>
 </mapper>

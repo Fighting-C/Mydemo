@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Date;
 
 /**
@@ -33,17 +34,20 @@ public class updateUser extends HttpServlet {
         try {
             String userid = req.getParameter("userId");
             String username = req.getParameter("name");
+            username = URLDecoder.decode(username, "UTF-8");
             String pwd = req.getParameter("userPassword");
             String roles = req.getParameter("roles");
             user = new User(username);
-            if (pwd!=null) {
+            if (!"".equals(pwd)) {
                 user.setUserPassword(pwd);
             }
             if (roles!=null) {
                 if (roles.equals("0")) {
-                    roles = "管理员";
-                }else {
-                    roles = "职工";
+                    roles = "admin";
+                }else if (roles.equals("1")){
+                    roles = "editor";
+                }else{
+                    roles = "approver";
                 }
                 user.setRoles(roles);
             }
