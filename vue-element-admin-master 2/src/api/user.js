@@ -45,3 +45,10 @@ export function deleteUser(params) {
     params
   })
 }
+export function getcode() {
+  return request({
+    baseURL: 'http://localhost:8080/MyDemo/',
+    url: '/getcode',
+    method: 'get',
+  })
+}

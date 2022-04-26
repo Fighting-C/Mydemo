@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class getMainTable extends HttpServlet {
 
         list = proService.SelectAllPro();
         for (Production production : list) {
-            
+
             if (production.getProNowGet().doubleValue() < 0.0) {
                 downPro++;
             }else {

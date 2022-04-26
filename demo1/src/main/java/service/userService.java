@@ -39,13 +39,13 @@ public class userService {
     /**
       *登录处理 返回true为成功
      **/
-    public int Login(User user) {
+    public int Login(User user,String code) {
         if (user.getUserPassword() == null || user.getName() == null) {
             return -1;
         }
         index = userDao.selectByUserNumber(user.getName());
         String pwd1 =user.getUserPassword();
-        String pwd2 = DigestUtils.md5Hex(index.getUserPassword());
+        String pwd2 = DigestUtils.md5Hex(index.getUserPassword()+code);
         if (index == null) {
             return -1;
         } else if (pwd2.equals(pwd1)) {

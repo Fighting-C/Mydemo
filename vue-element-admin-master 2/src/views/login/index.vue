@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">登录</h3>
       </div>
 
       <el-form-item prop="username">
@@ -54,11 +54,11 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
-import { encode64 } from '@/utils/index'
+import { getcode } from '@/api/user'
 import md5 from 'js-md5';
 export default {
   name: 'Login',
-
+  code: null,
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -124,25 +124,30 @@ export default {
       })
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true
-          this.loginForm.password =md5(this.loginForm.password)
-          this.loginForm.username = encodeURIComponent(this.loginForm.username)
-          this.$store.dispatch('user/login', this.loginForm)
-            .then(() => {
-              this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
-              this.loading = false
-            })
-            .catch(() => {
-              this.loading = false
-              this.$refs["loginForm"].resetFields()
-            })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
+      getcode().then(response => {
+        this.code = response.data
+        this.$refs.loginForm.validate(valid => {
+          if (valid) {
+            this.loading = true
+            console.log(this.loginForm.password + this.code)
+            this.loginForm.password =md5(this.loginForm.password + this.code)
+            this.loginForm.username = encodeURIComponent(this.loginForm.username)
+            this.$store.dispatch('user/login', this.loginForm)
+              .then(() => {
+                this.$router.push({ path: this.redirect || '/', query: this.otherQuery })
+                this.loading = false
+              })
+              .catch(() => {
+                this.loading = false
+                this.$refs["loginForm"].resetFields()
+              })
+          } else {
+            console.log('error submit!!')
+            return false
+          }
+        })
       })
+
     },
     getOtherQuery(query) {
       return Object.keys(query).reduce((acc, cur) => {

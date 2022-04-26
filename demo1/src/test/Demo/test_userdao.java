@@ -73,7 +73,7 @@ public class test_userdao {
         User user = new User();
         user.setName("admin");
         user.setUserPassword("96e79218965eb72c92a549dd5a330112");
-        System.out.println(userService.Login(user));
+        System.out.println(userService.Login(user,"44"));
 
     }
     @Test

@@ -13,7 +13,7 @@
       <div class="container">
         <div class="row">
           <div class="label">总管理资产</div>
-          <div class="value">{{this.map.manageMoney}}元</div>
+          <div class="value" >{{this.map.manageMoney}}元</div>
         </div>
         <div class="row">
           <div class="label">金融产品数</div>
