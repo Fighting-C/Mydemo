@@ -27,6 +27,46 @@
             </Config>
           </value>
         </entry>
+        <entry key="share_index">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ShareIndexDao" />
+              <option name="daoPackage" value="dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ShareIndex" />
+              <option name="modelPackage" value="entity" />
+              <option name="name" value="share_index" />
+              <option name="overrideJava" value="true" />
+              <option name="primaryKey" value="Index_id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="share_index" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="shares">
+          <value>
+            <Config>
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="SharesDao" />
+              <option name="daoPackage" value="dao" />
+              <option name="daoPostfix" value="sDao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Share" />
+              <option name="modelPackage" value="entity" />
+              <option name="name" value="shares" />
+              <option name="overrideJava" value="true" />
+              <option name="primaryKey" value="share_id" />
+              <option name="projectFolder" value="$PROJECT_DIR$" />
+              <option name="tableName" value="shares" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="mapper" />
+            </Config>
+          </value>
+        </entry>
         <entry key="task">
           <value>
             <Config>

@@ -7,12 +7,15 @@
     <result column="Pro_status" jdbcType="VARCHAR" property="proStatus" />
     <result column="Pro_Type" jdbcType="VARCHAR" property="proType" />
     <result column="Pro_Manage" jdbcType="INTEGER" property="proManage" />
+    <result column="Pro_cang" jdbcType="INTEGER" property="proCang" />
     <result column="Pro_BeTime" jdbcType="TIMESTAMP" property="proBetime" />
     <result column="Pro_EndTime" jdbcType="TIMESTAMP" property="proEndtime" />
     <result column="Pro_LastTime" jdbcType="TIMESTAMP" property="proLasttime" />
+    <result column="Pro_nowGet" jdbcType="DECIMAL" property="proNowGet"/>
+    <result column="Pro_monGet" jdbcType="DECIMAL" property="proMonGet"/>
   </resultMap>
   <sql id="Base_Column_List">
-    Pro_Id, Pro_Name, Pro_Type, Pro_Manage, Pro_BeTime, Pro_EndTime, Pro_LastTime ,Pro_status
+    Pro_Id, Pro_Name, Pro_Type, Pro_Manage, Pro_BeTime, Pro_EndTime, Pro_LastTime ,Pro_status ,Pro_cang,Pro_nowGet,Pro_monGet
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -56,6 +59,15 @@
       <if test="proStatus != null">
         Pro_status,
       </if>
+      <if test="proCang != null">
+        Pro_cang,
+      </if>
+      <if test="proNowGet != null">
+        Pro_nowGet,
+      </if>
+      <if test="proMonGet != null">
+        Pro_monGet,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="proName != null">
@@ -78,6 +90,15 @@
       </if>
       <if test="proStatus != null">
         #{proStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="proCang != null">
+        #{proCang,jdbcType=INTEGER},
+      </if>
+      <if test="proNowGet != null">
+        #{proNowGet,jdbcType=DECIMAL},
+      </if>
+      <if test="proMonGet != null">
+        #{proMonGet,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -104,6 +125,15 @@
       </if>
       <if test="proStatus != null">
         Pro_status = #{proStatus,jdbcType=VARCHAR},
+      </if>
+       <if test="proCang != null">
+         Pro_cang = #{proCang,jdbcType=INTEGER},
+      </if>
+       <if test="proNowGet != null">
+         Pro_nowGet = #{proNowGet,jdbcType=DECIMAL},
+      </if>
+       <if test="proMonGet != null">
+        Pro_status = #{proMonGet,jdbcType=DECIMAL},
       </if>
     </set>
     where Pro_Id = #{proId,jdbcType=INTEGER}

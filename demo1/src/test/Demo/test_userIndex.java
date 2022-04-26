@@ -20,7 +20,7 @@ public class test_userIndex {
 
     @Test
     public void test2() {
-        Date date = new Date();
-        System.out.println(date);
+
+        System.out.println("见到啦副驾驶的离开飞机啊");
     }
 }

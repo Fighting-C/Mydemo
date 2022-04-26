@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @PackageName:servlet
@@ -22,6 +23,7 @@ import java.util.HashMap;
 public class getMainTable extends HttpServlet {
     private JSONObject jsonObject = new JSONObject();
     private proService proService = new proService();
+    private List<Production> list = null;
     private Result result = new Result();
 
     @Override
@@ -33,6 +35,15 @@ public class getMainTable extends HttpServlet {
         int downPro = 0;
         int  otherMoney = 1000000 - manageMoney;
 
+        list = proService.SelectAllPro();
+        for (Production production : list) {
+            
+            if (production.getProNowGet().doubleValue() < 0.0) {
+                downPro++;
+            }else {
+                upPro++;
+            }
+        }
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         map.put("manageMoney", manageMoney);
         map.put("proNumber", proNumber);

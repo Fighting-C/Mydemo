@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ShareIndexDao">
+  <resultMap id="BaseResultMap" type="entity.ShareIndex">
+    <id column="Index_id" jdbcType="INTEGER" property="indexId" />
+    <result column="Pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="share_manage" jdbcType="INTEGER" property="shareManage" />
+    <result column="share_id" jdbcType="INTEGER" property="shareId" />
+    <result column="share_name" jdbcType="VARCHAR" property="shareName" />
+    <result column="share_price" jdbcType="DECIMAL" property="sharePrice" />
+    <result column="share_type" jdbcType="VARCHAR" property="shareType" />
+    <result column="share_number" jdbcType="INTEGER" property="shareNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Index_id, Pro_id, share_id, share_name, share_price, share_type, share_number,share_manage
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from share_index
+    where Index_id = #{indexId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from share_index
+    where Index_id = #{indexId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="Index_id" keyProperty="indexId" parameterType="entity.ShareIndex" useGeneratedKeys="true">
+    insert into share_index (Pro_id, share_id, share_name, 
+      share_price, share_type, share_number
+      )
+    values (#{proId,jdbcType=INTEGER}, #{shareId,jdbcType=INTEGER}, #{shareName,jdbcType=VARCHAR}, 
+      #{sharePrice,jdbcType=DECIMAL}, #{shareType,jdbcType=VARCHAR}, #{shareNumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertselective" keyColumn="Index_id" keyProperty="indexId" parameterType="entity.ShareIndex" useGeneratedKeys="true">
+    insert into share_index
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        Pro_id,
+      </if>
+      <if test="shareId != null">
+        share_id,
+      </if>
+      <if test="shareName != null">
+        share_name,
+      </if>
+      <if test="sharePrice != null">
+        share_price,
+      </if>
+      <if test="shareType != null">
+        share_type,
+      </if>
+      <if test="shareNumber != null">
+        share_number,
+      </if>
+      <if test="shareManage != null">
+        share_manage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="shareId != null">
+        #{shareId,jdbcType=INTEGER},
+      </if>
+      <if test="shareName != null">
+        #{shareName,jdbcType=VARCHAR},
+      </if>
+      <if test="sharePrice != null">
+        #{sharePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shareType != null">
+        #{shareType,jdbcType=VARCHAR},
+      </if>
+      <if test="shareNumber != null">
+        #{shareNumber,jdbcType=INTEGER},
+      </if>
+      <if test="shareManage != null">
+        #{shareManage,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.ShareIndex">
+    update share_index
+    <set>
+      <if test="proId != null">
+        Pro_id = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="shareId != null">
+        share_id = #{shareId,jdbcType=INTEGER},
+      </if>
+      <if test="shareName != null">
+        share_name = #{shareName,jdbcType=VARCHAR},
+      </if>
+      <if test="sharePrice != null">
+        share_price = #{sharePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="shareType != null">
+        share_type = #{shareType,jdbcType=VARCHAR},
+      </if>
+      <if test="shareNumber != null">
+        share_number = #{shareNumber,jdbcType=INTEGER},
+      </if>
+      <if test="shareManage != null">
+        share_manage = #{shareManage,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Index_id = #{indexId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.ShareIndex">
+    update share_index
+    set Pro_id = #{proId,jdbcType=INTEGER},
+      share_id = #{shareId,jdbcType=INTEGER},
+      share_name = #{shareName,jdbcType=VARCHAR},
+      share_price = #{sharePrice,jdbcType=DECIMAL},
+      share_type = #{shareType,jdbcType=VARCHAR},
+      share_number = #{shareNumber,jdbcType=INTEGER}
+    where Index_id = #{indexId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByProId" parameterType="integer" resultMap="BaseResultMap">
+    select * from share_index where Pro_id = #{pro_id}
+  </select>
+  <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
+    select * from share_index where share_name like #{name}
+  </select>
+</mapper>

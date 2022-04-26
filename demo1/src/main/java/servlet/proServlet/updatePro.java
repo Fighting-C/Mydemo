@@ -49,6 +49,7 @@ public class updatePro extends HttpServlet {
         String probegintime = req.getParameter("probegintime");
         String proendtime = req.getParameter("proendtime");
         String lowmoney = req.getParameter("lowmoney");
+        Integer advice = Integer.parseInt(req.getParameter("advice"));
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date betime = null;
         Date endtime = null;
@@ -58,7 +59,11 @@ public class updatePro extends HttpServlet {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        production = new Production(proname, getprotype(protype),betime,endtime);
+        protype = getprotype(protype);
+        System.out.println(protype);
+        production = new Production(proname,protype,betime,endtime);
+        production.setProCang(advice);
+        production.setProManage(Integer.parseInt(lowmoney));
         int flag = proService.insertSelective(production);
         if (flag == 0) {
             result.setCode(40000);

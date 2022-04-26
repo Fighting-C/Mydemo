@@ -812,189 +812,262 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="204" parent="2" name="pro_index"/>
-    <table id="205" parent="2" name="production"/>
-    <table id="206" parent="2" name="task"/>
-    <table id="207" parent="2" name="user">
+    <table id="204" parent="2" name="production"/>
+    <table id="205" parent="2" name="share_index"/>
+    <table id="206" parent="2" name="shares"/>
+    <table id="207" parent="2" name="task"/>
+    <table id="208" parent="2" name="user">
       <Comment>头像</Comment>
     </table>
-    <table id="208" parent="2" name="user_index"/>
-    <column id="209" parent="204" name="pro_id">
-      <Position>1</Position>
-      <DataType>int(16)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="210" parent="204" name="now_money">
-      <Position>2</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="211" parent="204" name="month_money">
-      <Position>3</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="212" parent="204" name="threemon_money">
-      <Position>4</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="213" parent="204" name="year_money">
-      <Position>5</Position>
-      <DataType>varchar(16)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="214" parent="205" name="Pro_Id">
+    <table id="209" parent="2" name="user_index"/>
+    <column id="210" parent="204" name="Pro_Id">
       <Position>1</Position>
       <DataType>int(8) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="215" parent="205" name="Pro_Name">
+    <column id="211" parent="204" name="Pro_Name">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="216" parent="205" name="Pro_Type">
+    <column id="212" parent="204" name="Pro_Type">
       <Position>3</Position>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="217" parent="205" name="Pro_Manage">
+    <column id="213" parent="204" name="Pro_Manage">
       <Position>4</Position>
       <Comment>当前管理资产</Comment>
       <DataType>int(64)|0s</DataType>
+      <DefaultExpression>1000</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="218" parent="205" name="Pro_BeTime">
+    <column id="214" parent="204" name="Pro_BeTime">
       <Position>5</Position>
       <Comment>当前募集时间</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="219" parent="205" name="Pro_EndTime">
+    <column id="215" parent="204" name="Pro_EndTime">
       <Position>6</Position>
       <Comment>募集结束时间</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="220" parent="205" name="Pro_LastTime">
+    <column id="216" parent="204" name="Pro_LastTime">
       <Position>7</Position>
       <Comment>上次分红时间</Comment>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="221" parent="205" name="Pro_status">
+    <column id="217" parent="204" name="Pro_status">
       <Position>8</Position>
       <DataType>varchar(32)|0s</DataType>
       <DefaultExpression>&apos;运营中&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="222" parent="205" name="PRIMARY">
+    <column id="218" parent="204" name="Pro_cang">
+      <Position>9</Position>
+      <DataType>int(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="219" parent="204" name="Pro_nowGet">
+      <Position>10</Position>
+      <DataType>decimal(32,2 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="220" parent="204" name="Pro_monGet">
+      <Position>11</Position>
+      <DataType>decimal(32,2 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="221" parent="204" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Pro_Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="223" parent="206" name="task_id">
+    <column id="222" parent="205" name="Index_id">
       <Position>1</Position>
       <DataType>int(16)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="224" parent="206" name="pro_id">
+    <column id="223" parent="205" name="Pro_id">
       <Position>2</Position>
       <DataType>int(16)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="225" parent="206" name="fromUser_id">
+    <column id="224" parent="205" name="share_id">
+      <Position>3</Position>
+      <DataType>int(16)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="225" parent="205" name="share_name">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="226" parent="205" name="share_price">
+      <Position>5</Position>
+      <DataType>decimal(10,2 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="227" parent="205" name="share_type">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="228" parent="205" name="share_number">
+      <Position>7</Position>
+      <DataType>int(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="229" parent="205" name="share_manage">
+      <Position>8</Position>
+      <DataType>int(32)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="230" parent="205" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Index_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="231" parent="206" name="share_id">
+      <Position>1</Position>
+      <DataType>int(16)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="232" parent="206" name="share_name">
+      <Position>2</Position>
+      <DataType>varchar(16)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="233" parent="206" name="share_price">
+      <Position>3</Position>
+      <DataType>decimal(10,2 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="234" parent="206" name="share_number">
+      <Position>4</Position>
+      <DataType>int(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="235" parent="206" name="share_type">
+      <Position>5</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="236" parent="206" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>share_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="237" parent="207" name="task_id">
+      <Position>1</Position>
+      <DataType>int(16)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="238" parent="207" name="pro_id">
+      <Position>2</Position>
+      <DataType>int(16)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="239" parent="207" name="fromUser_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="226" parent="206" name="task_type">
+    <column id="240" parent="207" name="task_type">
       <Position>4</Position>
       <DataType>varchar(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="227" parent="206" name="task_time">
+    <column id="241" parent="207" name="task_time">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="228" parent="206" name="task_statu">
+    <column id="242" parent="207" name="task_statu">
       <Position>6</Position>
       <DataType>varchar(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="229" parent="206" name="toUser_type">
+    <column id="243" parent="207" name="toUser_type">
       <Position>7</Position>
       <DataType>varchar(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="230" parent="206" name="PRIMARY">
+    <key id="244" parent="207" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>task_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="231" parent="207" name="User_Id">
+    <column id="245" parent="208" name="User_Id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="207" name="User_Type">
+    <column id="246" parent="208" name="User_Type">
       <Position>2</Position>
       <Comment>用户角色</Comment>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="207" name="User_Number">
+    <column id="247" parent="208" name="User_Number">
       <Position>3</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="207" name="User_password">
+    <column id="248" parent="208" name="User_password">
       <Position>4</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="207" name="avatar">
+    <column id="249" parent="208" name="avatar">
       <Position>5</Position>
       <DataType>varchar(128)|0s</DataType>
       <DefaultExpression>&apos;https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="207" name="User_time">
+    <column id="250" parent="208" name="User_time">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="237" parent="207" name="PRIMARY">
+    <key id="251" parent="208" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>User_Id
 User_Number</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="238" parent="208" name="User_id">
+    <column id="252" parent="209" name="User_id">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="208" name="User_Type">
+    <column id="253" parent="209" name="User_Type">
       <Position>2</Position>
       <DataType>varchar(64)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="208" name="User_Index">
+    <column id="254" parent="209" name="User_Index">
       <Position>3</Position>
       <Comment>用户权限标识</Comment>
       <DataType>int(8)|0s</DataType>
@@ -1002,7 +1075,7 @@ User_Number</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="241" parent="208" name="PRIMARY">
+    <key id="255" parent="209" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>User_Index</ColNames>
       <Primary>1</Primary>

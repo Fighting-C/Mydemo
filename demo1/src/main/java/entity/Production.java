@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -8,6 +9,36 @@ import java.util.Date;
  * @author 
  */
 public class Production implements Serializable {
+    private Integer proCang;
+
+    private BigDecimal proNowGet;
+
+    private BigDecimal proMonGet;
+
+    public Integer getProCang() {
+        return proCang;
+    }
+
+    public void setProCang(Integer proCang) {
+        this.proCang = proCang;
+    }
+
+    public BigDecimal getProNowGet() {
+        return proNowGet;
+    }
+
+    public void setProNowGet(BigDecimal proNowGet) {
+        this.proNowGet = proNowGet;
+    }
+
+    public BigDecimal getProMonGet() {
+        return proMonGet;
+    }
+
+    public void setProMonGet(BigDecimal proMonGet) {
+        this.proMonGet = proMonGet;
+    }
+
     private Integer proId;
 
     private String proName;
