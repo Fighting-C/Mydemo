@@ -133,16 +133,6 @@
         highlight-current-row
         botton
       >
-<!--       {-->
-<!--        "indexId": 1,-->
-<!--        "proId": 1,-->
-<!--        "shareId": 1,-->
-<!--        "shareManage": 0,-->
-<!--        "shareName": "产品1",-->
-<!--        "shareNumber": 111,-->
-<!--        "sharePrice": 2,-->
-<!--        "shareType": "汽车"-->
-<!--        }-->
         <el-table-column align="center" prop="share_name" label="股票名字" width="200">
           <template slot-scope="scope">
             <span>{{ scope.row.shareName }}</span>
@@ -170,8 +160,6 @@
         </el-table-column>
       </el-table>
       <div slot="footer" class="dialog-footer">
-<!--        <el-button @click.native="hideForm">取消</el-button>-->
-<!--        <el-button type="primary" @click.native="formSubmit()" :loading="formLoading">提交</el-button>-->
         <el-button type="primary" @click.native="hideForm" >完成</el-button>
       </div>
     </el-dialog>

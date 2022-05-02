@@ -2,7 +2,6 @@ package Demo;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
-import utils.decode;
 
 /**
  * @PackageName:Demo
