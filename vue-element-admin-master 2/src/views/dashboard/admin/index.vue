@@ -20,7 +20,7 @@
           <div class="value">{{this.map.proNumber}}个</div>
         </div>
         <div class="row">
-          <div class="label">当前基金市值</div>
+          <div class="label">已盈利</div>
           <div class="value">{{this.map.nowMoney}}元</div>
         </div>
         <div class="row">

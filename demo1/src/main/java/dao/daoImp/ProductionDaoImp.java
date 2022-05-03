@@ -60,7 +60,6 @@ public class ProductionDaoImp implements ProductionDao {
     }
 
     @Override
-    //selectone !!!
     public Production selectByPrimaryKey(Integer proId) {
         SqlSession sqlSession = SqlSessionUtils.getSqlSessionFactory().openSession();
         Production production = null;
@@ -118,6 +117,8 @@ public class ProductionDaoImp implements ProductionDao {
             sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            sqlSession.close();
         }
         return list;
 

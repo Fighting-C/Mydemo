@@ -31,4 +31,8 @@ public class shareIndexService {
     public List<ShareIndex> selectByName(String name) {
         return shareIndexDao.selectByName("%"+name+"%");
     }
+
+    public List<ShareIndex> selectAll() {
+        return shareIndexDao.selectAll();
+    }
     }

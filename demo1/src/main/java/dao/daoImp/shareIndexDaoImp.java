@@ -103,4 +103,18 @@ public class shareIndexDaoImp implements ShareIndexDao {
         }
         return list;
     }
+
+    @Override
+    public List<ShareIndex> selectAll() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSessionFactory().openSession();
+        List<ShareIndex> list = null;
+        try {
+            list = sqlSession.selectList("dao.ShareIndexDao.selectAll");
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return list;    }
 }

@@ -2,6 +2,7 @@ import entity.User;
 import org.junit.Test;
 import service.userIndexService;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -20,7 +21,9 @@ public class test_userIndex {
 
     @Test
     public void test2() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println(BigDecimal.ZERO.setScale(2,2));
+        }
 
-        System.out.println("见到啦副驾驶的离开飞机啊");
     }
 }

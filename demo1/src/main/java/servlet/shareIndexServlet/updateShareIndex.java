@@ -20,7 +20,7 @@ import service.shareIndexService;
  * @Date:2022/4/2515:26
  **/
 @WebServlet("/updateIndexShare")
-public class uodateShareIndex extends HttpServlet {
+public class updateShareIndex extends HttpServlet {
     private Result result = new Result();
     private JSONObject jsonObject = new JSONObject();
     private shareIndexService shareIndexSercide = new shareIndexService();

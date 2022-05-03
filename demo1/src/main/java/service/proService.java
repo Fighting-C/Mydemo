@@ -29,12 +29,17 @@ public class proService {
         List<Production> list = this.SelectAllPro();
         int sum = 0;
         for (Production production1 : list) {
-            sum += production1.getProManage();
+            if (production1.getProStatus().equals("运营中")) {
+                sum += production1.getProManage();
+            }
         }
         return sum;
     }
 
     public int updateByPrimaryKeySelective(Production production) {
         return productionDaoImp.updateByPrimaryKeySelective(production);
+    }
+    public Production selectByPrimaryKey(Integer proId) {
+        return productionDaoImp.selectByPrimaryKey(proId);
     }
 }

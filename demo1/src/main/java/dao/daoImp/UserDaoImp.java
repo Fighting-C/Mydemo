@@ -113,6 +113,8 @@ public class UserDaoImp implements UserDao {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }finally {
+            sqlSession.close();
         }
         return 1;
 

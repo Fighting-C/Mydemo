@@ -36,29 +36,30 @@
           {{ scope.row.proType }}
         </template>
       </el-table-column>
-      <el-table-column label="当前仓位" width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.proCang }}</span>
-        </template>
-      </el-table-column>
+<!--      <el-table-column label="当前仓位" width="110" align="center">-->
+<!--        <template slot-scope="scope">-->
+<!--          <span>{{ scope.row.proCang }}</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="建议仓位" width="110" align="center">
         <template slot-scope="scope">
           {{ scope.row.proCang }}
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="当前收益率" width="200">
+      <el-table-column align="center"  label="当前收益率" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.proNowGet }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="月收益率" width="200">
+      <el-table-column align="center"  label="当前收益" width="200">
         <template slot-scope="scope">
-          <span>{{ scope.row.proMonGet }}</span>
+          <span>{{handleMoney(scope.row.proNowGet,scope.row.proManage) }}</span>
         </template>
       </el-table-column>
       <el-table-column  align="center" prop="created_at" label="操作" width="200">
           <template slot-scope="scope">
-          <el-button  type="primary" class="myButton"  @click.native="handleForm(scope.row.proId)">调仓</el-button>
+          <el-button  type="primary" class="myButton"  v-if="scope.row.proStatus=='运营中'" @click.native="handleForm(scope.row.proId)">调仓</el-button>
+            <span v-if="scope.row.proStatus!='运营中'" >已结算不能操作</span>
         </template>
       </el-table-column>
     </el-table>
@@ -224,6 +225,7 @@ export default {
     hideForm() {
       // 更改值
       this.formVisible = !this.formVisible;
+      this.fetchData()
       // 清空表单
       return true;
     },
@@ -250,7 +252,7 @@ export default {
 
     },
     deleteIndex(indexId) {
-    deleteshare({indexId: indexId}).then(response => {
+    deleteshare({proid: this.proId,indexId: indexId}).then(response => {
       this.listLoading2 = true
       getOwnShare({ proid: this.proId}).then(response => {
         this.own_share = response.data
@@ -272,6 +274,14 @@ export default {
         })
       }
 
+    },
+    handleMoney(index, money) {
+      let sum = index * money
+      if (sum.toString().length > 7) {
+        return sum.toString().substring(0, 7)
+      } else {
+        return sum
+      }
     }
 }
 }

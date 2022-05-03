@@ -133,7 +133,7 @@
          Pro_nowGet = #{proNowGet,jdbcType=DECIMAL},
       </if>
        <if test="proMonGet != null">
-        Pro_status = #{proMonGet,jdbcType=DECIMAL},
+         Pro_monGet = #{proMonGet,jdbcType=DECIMAL},
       </if>
     </set>
     where Pro_Id = #{proId,jdbcType=INTEGER}

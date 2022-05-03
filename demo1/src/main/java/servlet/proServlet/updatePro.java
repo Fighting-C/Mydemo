@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,10 +37,10 @@ import java.util.Date;
 
 @WebServlet("/updatePro")
 public class updatePro extends HttpServlet {
-    Production production = null;
-    proService proService = new proService();
-    JSONObject jsonObject = new JSONObject();
-    Result result = new Result();
+    private Production production = null;
+    private proService proService = new proService();
+    private JSONObject jsonObject = new JSONObject();
+    private Result result = new Result();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -65,6 +66,7 @@ public class updatePro extends HttpServlet {
         production.setProCang(advice);
         production.setProManage(Integer.parseInt(lowmoney));
         int flag = proService.insertSelective(production);
+        result.setCode(20000);
         if (flag == 0) {
             result.setCode(40000);
         }

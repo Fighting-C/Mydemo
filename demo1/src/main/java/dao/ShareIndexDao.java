@@ -21,4 +21,7 @@ public interface ShareIndexDao {
 
     List<ShareIndex> selectByName(String name);
 
+    List<ShareIndex> selectAll();
+
+
 }

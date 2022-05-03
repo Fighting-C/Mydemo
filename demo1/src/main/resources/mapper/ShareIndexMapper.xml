@@ -125,4 +125,8 @@
   <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
     select * from share_index where share_name like #{name}
   </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from share_index
+  </select>
 </mapper>

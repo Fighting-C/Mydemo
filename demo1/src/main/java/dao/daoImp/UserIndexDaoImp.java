@@ -24,6 +24,8 @@ public class UserIndexDaoImp implements UserIndexDao {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }finally {
+            sqlSession.close();
         }
         return 1;
     }
@@ -40,6 +42,8 @@ public class UserIndexDaoImp implements UserIndexDao {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }finally {
+            sqlSession.close();
         }
         return 1;
     }
@@ -56,6 +60,8 @@ public class UserIndexDaoImp implements UserIndexDao {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }finally {
+            sqlSession.close();
         }
         return 1;
     }
@@ -73,6 +79,8 @@ public class UserIndexDaoImp implements UserIndexDao {
             userIndex = sqlSession.selectOne("dao.UserIndexDao.selectUserIndexById", record);
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            sqlSession.close();
         }
         return userIndex;
 

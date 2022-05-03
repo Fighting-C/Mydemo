@@ -1,9 +1,11 @@
 package servlet.shareIndexServlet;
 
 import com.alibaba.fastjson.JSONObject;
+import entity.Production;
 import entity.Result;
 import entity.Share;
 import entity.ShareIndex;
+import service.proService;
 import service.shareIndexService;
 import service.shareService;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -27,11 +30,16 @@ public class addShareIndex extends HttpServlet {
     private shareIndexService shareInexService = new shareIndexService();
     private List<ShareIndex> list = null;
     private shareService shareService = new shareService();
+    private proService proService = new proService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String shareid = req.getParameter("shareid");
         String proid = req.getParameter("proid");
         ShareIndex shareIndex = new ShareIndex();
+        Production production = proService.selectByPrimaryKey(Integer.parseInt(proid));
+        production.setProNowGet(new BigDecimal(Math.random()*(3)+(-0.5)).setScale(2,2));
+        production.setProId(Integer.parseInt(proid));
+        proService.updateByPrimaryKeySelective(production);
         try {
             Share share = shareService.selectByPrimaryKey(Integer.parseInt(shareid));
             shareIndex.setProId(Integer.parseInt(proid));
