@@ -59,7 +59,7 @@
       <el-table-column  align="center" prop="created_at" label="操作" width="200">
           <template slot-scope="scope">
           <el-button  type="primary" class="myButton"  v-if="scope.row.proStatus=='运营中'" @click.native="handleForm(scope.row.proId)">调仓</el-button>
-            <span v-if="scope.row.proStatus!='运营中'" >已结算不能操作</span>
+            <span v-if="scope.row.proStatus!='运营中'" >此产品不能操作</span>
         </template>
       </el-table-column>
     </el-table>

@@ -57,6 +57,7 @@
           <el-button type="primary" class="myButton" @click.native="jieSuan(scope.row.proId)" v-show="scope.row.proStatus=='运营中'">结算</el-button>
           <spen v-show="scope.row.proStatus=='已结算'">已结算，不能操作</spen>
           <spen v-show="scope.row.proStatus=='正在审批中'">正在审批中，不能操作</spen>
+          <spen v-show="scope.row.proStatus=='未通过创建审核'">未通过创建审核，不能操作</spen>
         </template>
       </el-table-column>
     </el-table>
@@ -238,7 +239,7 @@ export default {
               this.resetForm();
               return false;
             }
-            this.$message.success("操作成功");
+            this.$message.success("申请创建成功");
             this.formVisible = false;
             this.fetchData();
             this.resetForm();

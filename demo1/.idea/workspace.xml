@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd2b0d4c-71bc-471c-88f2-28dd037431d9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/proServlet/updatePro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/proServlet/updatePro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/taskServlet/updateTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/taskServlet/updateTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/servlet/proServlet/updatePro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/servlet/proServlet/updatePro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/one/WEB-INF/classes/servlet/proServlet/updatePro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/one/WEB-INF/classes/servlet/proServlet/updatePro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-element-admin-master 2/src/views/tree/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-element-admin-master 2/src/views/tree/index.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -73,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/taskServlet/updateTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="58" column="67" lean-forward="true" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
+            <state relative-caret-position="178">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,10 +101,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/proServlet/updatePro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="567">
               <caret line="81" column="42" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -722,7 +717,7 @@
       <workItem from="1651566976264" duration="6263000" />
       <workItem from="1651575926471" duration="37000" />
       <workItem from="1651576892255" duration="1785000" />
-      <workItem from="1651579297531" duration="4182000" />
+      <workItem from="1651579297531" duration="5070000" />
     </task>
     <servers />
   </component>
@@ -759,7 +754,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206651000" />
+    <option name="totallyTimeSpent" value="207539000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -772,9 +767,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1018" y="0" width="1037" height="1128" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26455566" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26455566" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24974516" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -798,7 +792,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32868525" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32968128" />
       <window_info anchor="bottom" id="Application Servers" order="14" weight="0.32768923" />
-      <window_info anchor="bottom" id="Run" order="15" sideWeight="0.5469062" visible="true" weight="0.26104417" />
+      <window_info active="true" anchor="bottom" id="Run" order="15" sideWeight="0.5469062" visible="true" weight="0.3875502" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1312,16 +1306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/taskServlet/updateTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="58" column="67" lean-forward="true" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TaskMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="497">
@@ -1331,8 +1315,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlet/proServlet/updatePro.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="567">
           <caret line="81" column="42" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/taskServlet/updateTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

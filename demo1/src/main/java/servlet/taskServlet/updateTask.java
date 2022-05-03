@@ -37,17 +37,23 @@ public class updateTask  extends HttpServlet {
         String path = req.getServletPath();
         task.setTaskId(Integer.parseInt(taskId));
         int flag;
+        Task task2 = taskService.getTaskByTaskId(Integer.parseInt(taskId));
+        String type = task2.getTaskType();
         if ("/unpass".equals(path)) {
             task.setTaskStatu("未通过");
+            if ("创建".equals(type)) {
+                Production production = new Production();
+                production.setProId(task2.getProId());
+                production.setProStatus("未通过创建审核");
+                proService.updateByPrimaryKeySelective(production);
+            }
         }else {
-            Task task2 = taskService.getTaskByTaskId(Integer.parseInt(taskId));
-            String type = task2.getTaskType();
             if ("分红".equals(type)) {
                 Production production = new Production();
                 production.setProId(task2.getProId());
                 production.setProLasttime(new Date());
                 proService.updateByPrimaryKeySelective(production);
-            }else if ("结算".equals(path)){
+            }else if ("结算".equals(type)){
                 Production production = new Production();
                 production.setProId(task2.getProId());
                 production.setProStatus("已结算");
