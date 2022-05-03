@@ -53,9 +53,10 @@
       </el-table-column>
       <el-table-column align="center" prop="created_at" label="操作" width="200" v-if="this.userroles === 'admin'||this.userroles=== 'editor'">
         <template slot-scope="scope">
-          <el-button  type="primary" class="myButton"  @click.native="fenHong(scope.row.proId)" v-show="scope.row.proStatus!=='已结算'">分红</el-button>
-          <el-button type="primary" class="myButton" @click.native="jieSuan(scope.row.proId)" v-show="scope.row.proStatus!=='已结算'">结算</el-button>
-          <spen v-show="scope.row.proStatus==='已结算'">已结算</spen>
+          <el-button  type="primary" class="myButton"  @click.native="fenHong(scope.row.proId)" v-show="scope.row.proStatus=='运营中'">分红</el-button>
+          <el-button type="primary" class="myButton" @click.native="jieSuan(scope.row.proId)" v-show="scope.row.proStatus=='运营中'">结算</el-button>
+          <spen v-show="scope.row.proStatus=='已结算'">已结算，不能操作</spen>
+          <spen v-show="scope.row.proStatus=='正在审批中'">正在审批中，不能操作</spen>
         </template>
       </el-table-column>
     </el-table>
@@ -127,6 +128,7 @@ const formJson = {
   lowmoney:"",
   advice: 80,
   ways: "",
+  userid: null
 };
 export default {
   filters: {
@@ -183,6 +185,7 @@ export default {
   },
   created() {
     this.fetchData()
+    this.formData.userId= store.getters.token
     this.userroles = store.getters.roles
   },
   methods: {

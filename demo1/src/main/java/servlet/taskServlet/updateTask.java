@@ -47,10 +47,15 @@ public class updateTask  extends HttpServlet {
                 production.setProId(task2.getProId());
                 production.setProLasttime(new Date());
                 proService.updateByPrimaryKeySelective(production);
-            }else{
+            }else if ("结算".equals(path)){
                 Production production = new Production();
                 production.setProId(task2.getProId());
                 production.setProStatus("已结算");
+                proService.updateByPrimaryKeySelective(production);
+            }else {
+                Production production = new Production();
+                production.setProId(task2.getProId());
+                production.setProStatus("运营中");
                 proService.updateByPrimaryKeySelective(production);
             }
 

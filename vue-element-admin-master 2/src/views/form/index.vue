@@ -21,7 +21,7 @@
           {{ scope.row.taskId}}
         </template>
       </el-table-column>
-      <el-table-column label="产品名称"  align="center" width="200">
+      <el-table-column label="产品ID"  align="center" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.proId }}</span>
         </template>
@@ -65,7 +65,7 @@
           {{ scope.row.taskId }}
         </template>
       </el-table-column>
-      <el-table-column label="产品名称" width="200" align="center">
+      <el-table-column label="产品ID" width="200" align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.proId }}</span>
         </template>
@@ -75,12 +75,12 @@
           {{ scope.row.taskType }}
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="操作人ID" width="200">
+      <el-table-column align="center" label="操作人ID" width="200">
         <template slot-scope="scope">
           <span>{{ scope.row.fromUserid }}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="申请时间" width="240">
+      <el-table-column align="center"  label="申请时间" width="240">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.taskTime) }}</span>
         </template>
